@@ -2,6 +2,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      scale: {
+        card:'1.02',
+      },
       colors: {
         'primary': {
           DEFAULT: '#00ADB5',
