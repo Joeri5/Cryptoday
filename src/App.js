@@ -19,7 +19,7 @@ function App() {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/coins" element={<Coins />} />
-                    <Route path="/coins" element={<CoinInfo />} />
+                    <Route path="/coins/:id" element={<CoinInfo />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
