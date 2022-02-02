@@ -10,9 +10,8 @@ const CryptoCard = ({ data }) => {
     }
 
     return (
-        <div className="rounded-sm p-5 outline outline-4 relative hover:scale-card hover:cursor-pointer hover:transition-transform" style={{
-            background: `linear-gradient(45deg, ${data.color || 'black'} 55%, #FFFF 45%)`,
-            outlineColor: `${data.color || 'black'}`
+        <div className="rounded-sm p-5 outline outline-4 outline-primary-blue-500 relative hover:scale-card hover:cursor-pointer hover:transition-transform" style={{
+            background: `linear-gradient(45deg, #21264A 55%, #FFFF 45%)`
         }}>
             <div className="absolute top-2 left-2 px-2 rounded-full text-white font-light text-xl flex justify-center align-center" style={{ backgroundColor: 'rgba(255,255,255,0.20)' }}>
                 #{data.rank}
@@ -24,7 +23,7 @@ const CryptoCard = ({ data }) => {
                     </h2>
                     <h3 className="font-light">
                         {formatMoney(priceTag.price)}
-                        <span className="rounded ml-4 px-2 py-0.5" style={{ backgroundColor: priceTag.color }}>
+                        <span className="rounded-sm ml-4 px-2 py-0.5" style={{ backgroundColor: priceTag.color }}>
                             {priceTag.change}%
                         </span>
                     </h3>

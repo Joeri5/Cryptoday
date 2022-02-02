@@ -5,6 +5,6 @@
 @tailwind utilities;
 
 body {
-    @apply bg-gradient-to-r from-white-300 to-white-400;
+    @apply bg-dark-600;
     font-family: 'Poppins', sans-serif;
 }

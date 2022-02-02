@@ -13,10 +13,10 @@ export const cryptoApi = createApi({
     endpoints: (builder) => ({
         getCoins: builder.query({
             query: ({ offset, limit, filter }) => createRequest(`/coins?limit=${limit}&offset=${offset}&orderBy=${filter}`)
-        })
+        }),
     })
 });
 
 export const {
-    useGetCoinsQuery
+    useGetCoinsQuery,
 } = cryptoApi;

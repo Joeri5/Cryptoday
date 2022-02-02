@@ -11,7 +11,7 @@ function App() {
     return (
         <>
             <Sidebar />
-            <div className="pl-64">
+            <div className="pl-64 bg-dark-600">
                 <Appbar title="Hello" />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
