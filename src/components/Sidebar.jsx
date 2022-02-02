@@ -1,11 +1,20 @@
 import React from 'react';
 import Icon from "./Icon";
 import Logo from "../assets/icon.png"
-import {Link} from "react-router-dom";
+import {Link, useMatch} from "react-router-dom";
 
 const SidebarButton = ({ children, icon, path }) => {
+    const match = useMatch(path);
+
     return (
-        <li className="-mx-5 py-3">
+        match ? (
+            <li className="-mx-5 py-3">
+                <Link to={path} className="text-white text-xl flex items-center gap-2 bg-primary-blue-300 bg-opacity-50 transition-all duration-300 px-4 py-2 rounded-xl" href="/">
+                    {icon && <Icon icon={icon}/>}
+                    {children}
+                </Link>
+            </li>
+        ) : <li className="-mx-5 py-3">
             <Link to={path} className="text-white text-xl flex items-center gap-2 hover:bg-primary-blue-300 hover:bg-opacity-50 transition-all duration-300 px-4 py-2 rounded-xl" href="/">
                 {icon && <Icon icon={icon}/>}
                 {children}
@@ -16,7 +25,7 @@ const SidebarButton = ({ children, icon, path }) => {
 
 const Sidebar = () => {
     return (
-        <div className="fixed w-64 top-0 left-0 h-screen bg-primary-blue-500">
+        <div className="fixed w-64 top-0 left-0 h-screen bg-primary-blue-500 rounded-br-3xl">
             <div className="p-10 flex flex-col justify-between h-full">
                 <div>
                     <header>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {formatMoney} from "../util/currencyUtil";
 import {hover} from "@testing-library/user-event/dist/hover";
+import {Link} from "react-router-dom";
 
 const CryptoCard = ({ data }) => {
     const priceTag = {
@@ -10,7 +11,7 @@ const CryptoCard = ({ data }) => {
     }
 
     return (
-        <div className="rounded-sm p-5 outline outline-4 outline-primary-blue-500 relative hover:scale-card hover:cursor-pointer hover:transition-transform" style={{
+        <Link to={`/coins/${data.uuid}`} className="rounded-sm p-5 outline outline-4 outline-primary-blue-500 relative hover:scale-card hover:cursor-pointer hover:transition-transform" style={{
             background: `linear-gradient(45deg, #21264A 55%, #FFFF 45%)`
         }}>
             <div className="absolute top-2 left-2 px-2 rounded-full text-white font-light text-xl flex justify-center align-center" style={{ backgroundColor: 'rgba(255,255,255,0.20)' }}>
@@ -32,7 +33,7 @@ const CryptoCard = ({ data }) => {
                     <img className="w-24 h-24" src={data.iconUrl} alt={data.name} />
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

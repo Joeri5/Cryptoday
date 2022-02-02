@@ -5,17 +5,18 @@ import millify from "millify";
 import CryptoCard from "../components/CryptoCard";
 import {useGetNewsQuery} from "../api/newsApi";
 import NewsCard from "../components/NewsCard";
+import Spinner from "../components/Spinner";
 
 const SectionTitle = ({children, icon}) => {
     return <h2 className="text-sm font-bold uppercase text-blue-500 mb-2">{children}</h2>
 }
 
 const Dashboard = () => {
-    const { data: stats, isFetching: isStatsFetching } = useGetCoinsQuery({ offset: 0, limit: 5, filter: 'marketCap' });
+    const { data: stats, isFetching: isStatsFetching } = useGetCoinsQuery({ offset: 0, limit: 3, filter: 'marketCap' });
     const { data: news, isFetching: isNewsFetching } = useGetNewsQuery({ term: 'crypto' });
 
     if (isStatsFetching || isNewsFetching)
-        return "Loading...";
+        return <Spinner />;
 
     return (
         <div className="p-10">
@@ -28,8 +29,8 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="mt-20">
-                <SectionTitle>Top 5 Coins</SectionTitle>
-                <div className="grid grid-cols-5 gap-5">
+                <SectionTitle>Top 3 Coins</SectionTitle>
+                <div className="grid grid-cols-3 gap-5">
                     {stats.data.coins.map(coin => <CryptoCard data={coin}/> )}
                 </div>
             </div>

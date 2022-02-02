@@ -14,8 +14,8 @@ const Appbar = () => {
     }, [location.pathname]);
 
     return (
-        <div className="flex items-center w-full p-5 text-white">
-            <h3 className="mx-5 text-secondary">/ {title}</h3>
+        <div className="flex items-center w-full p-5 text-white bg-primary-blue-400">
+            <h3 className="mx-5 text-secondary-100 font-bold">{title}</h3>
         </div>
     );
 };

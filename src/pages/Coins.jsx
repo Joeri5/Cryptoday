@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useGetCoinsQuery} from "../api/cryptoApi";
 import CryptoCard from "../components/CryptoCard";
+import Spinner from "../components/Spinner";
 
 const PaginationBar = ({ pageState, pages }) => {
     const [page, setPage] = pageState;
@@ -16,7 +17,7 @@ const PaginationBar = ({ pageState, pages }) => {
     }
 
     return (
-        <div className="flex items-center gap-x-3 text-xl">
+        <div className="flex items-center gap-x-3 text-xl text-white">
             {<button onClick={() => {
                 if (page === 0) return;
                 setPage(0);
@@ -61,7 +62,7 @@ const Coins = () => {
     const { data: coinData, isFetching } = useGetCoinsQuery({ offset: page * 30, limit: 30, filter });
 
     if (isFetching) {
-        return "Loading..."
+        return <Spinner />;
     }
 
     const coins = coinData.data.coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()));
@@ -70,12 +71,12 @@ const Coins = () => {
         <div className="p-10">
             <div className="flex w-full gap-x-3">
                 <input
-                    className="rounded-md bg-white-500 px-5 py-2 focus:outline-none focus:outline-white-700 flex-grow"
+                    className="rounded-md bg-primary-blue-500 px-5 py-2 focus:outline-none focus:outline-primary-blue-400 flex-grow text-white"
                     type="text"
                     placeholder="Search for a coin..."
                     onChange={event => setSearch(event.target.value)}
                 />
-                <select onChange={event => setFilter(event.target.value)} className="rounded-md bg-white-500 px-5 py-2 focus:outline-none focus:outline-white-700">
+                <select onChange={event => setFilter(event.target.value)} className="text-white rounded-md bg-primary-blue-500 px-5 py-2 focus:outline-none focus:outline-primary-blue-400">
                     {Object.keys(filters).map(f => (
                         filter === f ? <option selected value={f}>{filters[f]}</option> : <option value={f}>{filters[f]}</option>
                     ))}
@@ -83,7 +84,7 @@ const Coins = () => {
             </div>
             <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {coins.length === 0 ? (
-                    <span className="mx-auto col-span-3">No results found</span>
+                    <span className="text-white mx-auto col-span-3">No results found :(</span>
                 ) : (
                     coins.map(coin => <CryptoCard data={coin} />)
                 )}

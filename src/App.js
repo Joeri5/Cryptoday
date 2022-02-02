@@ -5,18 +5,21 @@ import NotFound from "./pages/NotFound";
 import News from "./pages/News";
 import Coins from "./pages/Coins";
 import Appbar from "./components/Appbar";
+import Spinner from "./components/Spinner";
+import CoinInfo from "./pages/CoinInfo";
 
 function App() {
 
     return (
         <>
             <Sidebar />
-            <div className="pl-64 bg-dark-600">
-                <Appbar title="Hello" />
+            <div className="pl-64">
+                <Appbar />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/news" element={<News />} />
                     <Route path="/coins" element={<Coins />} />
+                    <Route path="/coins" element={<CoinInfo />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
